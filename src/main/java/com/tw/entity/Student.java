@@ -6,7 +6,7 @@ import java.util.List;
 public class Student {
     private String name;
     private String studentId;
-    private List<Subject> subjects = new ArrayList<>();
+    private Subject subject;
 
     public String getName() {
         return name;
@@ -24,11 +24,11 @@ public class Student {
         this.studentId = studentId;
     }
 
-    public List<Subject> getSubjects() {
-        return subjects;
+    public Subject getSubject() {
+        return subject;
     }
 
     public void setSubject(Subject subject) {
-        this.subjects.add(subject);
+        this.subject = subject;
     }
 }
