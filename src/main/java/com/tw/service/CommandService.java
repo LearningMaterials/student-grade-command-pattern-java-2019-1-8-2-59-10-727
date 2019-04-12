@@ -16,26 +16,54 @@ public class CommandService {
         commandPage.mainPage();
     }
 
-    public void userSelect(int menuNumber) {
+    public void userSelectMenu(int menuNumber) {
         if (menuNumber == 1) {
-            commandPage.inputStudentInfoPage();
-            String studentInfo = input.nextLine();
-            Student student = addStudent(studentInfo);
-            if (student == null) {
-                commandPage.inputStudentInfoAgainPage();
-                String studentInfoStr = input.nextLine();
-                StudentData.add(addStudent(studentInfoStr));
-            } else {
-                StudentData.add(student);
-                commandPage.inputStudentSuccessPage(student.getName());
-            }
+            addStudentToStudentData();
         } else if (menuNumber == 2) {
-            commandPage.inputStudentIdPage();
-            String studentIdStr = input.nextLine();
-            System.out.println(showStudentScore(studentIdStr));
+            showStudentSubject();
         } else if (menuNumber == 3) {
             System.exit(1);
         }
+    }
+
+    private void showStudentSubject() {
+        String result;
+        commandPage.inputStudentIdPage();
+        String studentId = input.nextLine();
+        result = showStudentScore(studentId);
+        while (Objects.isNull(result)) {
+            commandPage.inputStudentIdAgainPage();
+            result = getStudentSubjectByIds();
+        }
+        commandPage.showStudentSubject(result);
+    }
+
+    private String getStudentSubjectByIds() {
+        String studentId;
+        String result;
+        studentId = input.nextLine();
+        result = showStudentScore(studentId);
+        return result;
+    }
+
+    private void addStudentToStudentData() {
+        Student student;
+        commandPage.inputStudentInfoPage();
+        student = getStudent();
+        while (Objects.isNull(student)) {
+            commandPage.inputStudentInfoAgainPage();
+            student = getStudent();
+        }
+        StudentData.add(student);
+        commandPage.inputStudentSuccessPage(student.getName());
+    }
+
+    private Student getStudent() {
+        String studentInfo;
+        Student student;
+        studentInfo = input.nextLine();
+        student = addStudent(studentInfo);
+        return student;
     }
 
     public Student addStudent(String studentInfo) {
@@ -71,13 +99,12 @@ public class CommandService {
     }
 
     public String showStudentScore(String studentIdStr) {
-
         List<String> studentIds = Arrays.asList(studentIdStr.split(", "));
         List<Integer> classSumList = new ArrayList<>();
         String result = "成绩单\n" +
                 "姓名|数学|语文|英语|编程|平均分|总分\n" +
                 "========================\n";
-        try {
+        if (studentIds.size() != 0) {
             List<Student> students = StudentData.getStudents().stream()
                     .filter(item -> studentIds.contains(item.getStudentId()))
                     .collect(Collectors.toList());
@@ -102,12 +129,10 @@ public class CommandService {
             result += ("========================\n" +
                     "全班总分平均数：" + classSumList.stream().mapToDouble(Integer::intValue).sum() / classSumList.size() + "\n" +
                     "全班总分中位数：" + Median);
-        } catch (NumberFormatException e) {
-            //todo
-            commandPage.inputStudentIdAgainPage();
-            String studentId = input.nextLine();
-            showStudentScore(studentId);
+            return result;
         }
-        return result;
+        //todo
+
+        return null;
     }
 }

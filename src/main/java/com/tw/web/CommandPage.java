@@ -26,5 +26,7 @@ public class CommandPage {
     public void inputStudentSuccessPage(String name) {
         System.out.println("学生" + name + "的成绩被添加");
     }
-
+    public void showStudentSubject(String result){
+        System.out.println(result);
+    }
 }

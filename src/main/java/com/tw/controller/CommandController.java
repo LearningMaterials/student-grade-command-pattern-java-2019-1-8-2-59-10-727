@@ -10,13 +10,13 @@ public class CommandController {
     public void run() {
         Scanner input = new Scanner(System.in);
         while (true){
-            userSelectMenuNumber(input);
+            userSelectMenu(input);
         }
     }
 
-    private void userSelectMenuNumber(Scanner input) {
+    private void userSelectMenu(Scanner input) {
         commandService.mainPage();
         int menuNumber = input.nextInt();
-        commandService.userSelect(menuNumber);
+        commandService.userSelectMenu(menuNumber);
     }
 }

@@ -17,7 +17,7 @@ public class CommandServiceTest {
     public final SystemOutRule log = new SystemOutRule().enableLog();
 
     @Before
-    public void init_student_date(){
+    public void init_student_data(){
         Subject subject = new Subject();
         subject.setMath(100);
         subject.setEnglish(80);
