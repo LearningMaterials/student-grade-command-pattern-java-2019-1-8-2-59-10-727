@@ -6,13 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentData {
-    List<Student> students = new ArrayList<>();
+    static List<Student> students = new ArrayList<>();
 
-    public void add(Student student) {
+    public static void add(Student student) {
         students.add(student);
     }
 
-    public List<Student> getStudents() {
+    public static List<Student> getStudents() {
         return students;
     }
 }

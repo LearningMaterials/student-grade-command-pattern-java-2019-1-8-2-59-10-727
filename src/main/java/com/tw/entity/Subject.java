@@ -1,40 +1,40 @@
 package com.tw.entity;
 
 public class Subject {
-    private double math;
-    private double language;
-    private double english;
-    private double program;
+    private Integer math;
+    private Integer language;
+    private Integer english;
+    private Integer program;
 
-    public double getMath() {
+    public Integer getMath() {
         return math;
     }
 
-    public void setMath(double math) {
+    public void setMath(Integer math) {
         this.math = math;
     }
 
-    public double getLanguage() {
+    public Integer getLanguage() {
         return language;
     }
 
-    public void setLanguage(double language) {
+    public void setLanguage(Integer language) {
         this.language = language;
     }
 
-    public double getEnglish() {
+    public Integer getEnglish() {
         return english;
     }
 
-    public void setEnglish(double english) {
+    public void setEnglish(Integer english) {
         this.english = english;
     }
 
-    public double getProgram() {
+    public Integer getProgram() {
         return program;
     }
 
-    public void setProgram(double program) {
+    public void setProgram(Integer program) {
         this.program = program;
     }
 }
