@@ -121,3 +121,13 @@
 4. [Git 参考手册](http://gitref.org/zh/index.html)
 5. [Junit](http://junit.org/junit5/docs/current/user-guide/#writing-tests-assertions)
 6. [Mockito](http://site.mockito.org/)
+
+----
+
+## 如何测试：
+```
+ ./gradlew test   
+```
+## 如何运行文件：
+找到文件`com.tw.Application`
+启动Application.java文件中的main方法

@@ -131,7 +131,6 @@ public class CommandService {
                     "全班总分中位数：" + Median);
             return result;
         }
-        //todo
 
         return null;
     }
